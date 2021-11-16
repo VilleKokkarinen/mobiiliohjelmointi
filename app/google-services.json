@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "318964469713",
+    "firebase_url": "https://ohtu2-savonia-default-rtdb.firebaseio.com",
+    "project_id": "ohtu2-savonia",
+    "storage_bucket": "ohtu2-savonia.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:318964469713:android:378a887586378268b0daf0",
+        "android_client_info": {
+          "package_name": "com.example.login"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "318964469713-b524gjhs6i782iaigami52irpgddr9ui.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4G187S-lxRgaeyDib-IzAVAVd4Ld99Do"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "318964469713-b524gjhs6i782iaigami52irpgddr9ui.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
