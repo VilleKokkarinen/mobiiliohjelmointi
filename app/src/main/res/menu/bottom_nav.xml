@@ -9,6 +9,10 @@
         android:id="@+id/productFragment"
         android:icon="@drawable/ic_dashboard_black_24dp"
         android:title="@string/title_products" />
+    <item
+        android:id="@+id/orderFragment"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="@string/title_orders" />
 
     <item
         android:id="@+id/settings"

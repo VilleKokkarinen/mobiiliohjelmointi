@@ -21,6 +21,7 @@
 
     <string name="title_home">Home</string>
     <string name="title_products">Tuotteet</string>
+    <string name="title_orders">Tilaukset</string>
     <string name="title_userpage">Käyttäjän asetukset</string>
     <string name="title_basket">Ostoskori</string>
     <!-- Preference Titles -->
