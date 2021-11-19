@@ -38,7 +38,7 @@ class OrderFragment : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = MyOrderRecyclerViewAdapter(PlaceholderContent.ITEMS)
+                adapter = OrderRecyclerViewAdapter(PlaceholderContent.ITEMS)
             }
         }
         return view

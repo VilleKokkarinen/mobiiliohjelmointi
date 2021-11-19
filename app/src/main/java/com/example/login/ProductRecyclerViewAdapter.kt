@@ -2,19 +2,14 @@ package com.example.login
 
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 
-import com.example.login.placeholder.PlaceholderContent.PlaceholderItem
 import com.example.login.databinding.FragmentProductBinding
+import com.example.login.placeholder.ProductContent
 
-/**
- * [RecyclerView.Adapter] that can display a [PlaceholderItem].
- * TODO: Replace the implementation with code for your data type.
- */
 class ProductRecyclerViewAdapter(
-    private val values: List<PlaceholderItem>
+    private val values: MutableList<ProductContent.ProductContent>
 ) : RecyclerView.Adapter<ProductRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -31,8 +26,8 @@ class ProductRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
-        holder.idView.text = item.id
-        holder.contentView.text = item.content
+        holder.idView.text = item.content.id
+        holder.contentView.text = item.content.name
     }
 
     override fun getItemCount(): Int = values.size

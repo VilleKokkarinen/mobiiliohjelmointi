@@ -8,7 +8,19 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.login.placeholder.PlaceholderContent
+import com.example.login.placeholder.ProductContent
+import com.google.firebase.database.DatabaseError
+
+import com.google.firebase.database.DataSnapshot
+
+import com.google.firebase.database.ValueEventListener
+
+import com.google.firebase.database.DatabaseReference
+
+import com.google.firebase.database.FirebaseDatabase
+
+
+
 
 /**
  * A fragment representing a list of Items.
@@ -19,7 +31,6 @@ class ProductFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         arguments?.let {
             columnCount = it.getInt(ARG_COLUMN_COUNT)
         }
@@ -38,7 +49,7 @@ class ProductFragment : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = ProductRecyclerViewAdapter(PlaceholderContent.ITEMS)
+                adapter = ProductRecyclerViewAdapter(ProductContent.ITEMS)
             }
         }
         return view
