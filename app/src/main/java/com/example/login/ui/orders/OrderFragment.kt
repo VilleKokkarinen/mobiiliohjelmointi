@@ -1,36 +1,27 @@
-package com.example.login
+package com.example.login.ui.orders
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.login.placeholder.ProductContent
-import com.google.firebase.database.DatabaseError
-
-import com.google.firebase.database.DataSnapshot
-
-import com.google.firebase.database.ValueEventListener
-
-import com.google.firebase.database.DatabaseReference
-
-import com.google.firebase.database.FirebaseDatabase
-
-
-
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.login.adapters.OrderRecyclerViewAdapter
+import com.example.login.R
+import com.example.login.placeholder.PlaceholderContent
 
 /**
  * A fragment representing a list of Items.
  */
-class ProductFragment : Fragment() {
+class OrderFragment : Fragment() {
 
     private var columnCount = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         arguments?.let {
             columnCount = it.getInt(ARG_COLUMN_COUNT)
         }
@@ -40,7 +31,7 @@ class ProductFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_product_list, container, false)
+        val view = inflater.inflate(R.layout.fragment_order_item_list, container, false)
 
         // Set the adapter
         if (view is RecyclerView) {
@@ -49,7 +40,7 @@ class ProductFragment : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = ProductRecyclerViewAdapter(ProductContent.ITEMS)
+                adapter = OrderRecyclerViewAdapter(PlaceholderContent.ITEMS)
             }
         }
         return view
@@ -63,7 +54,7 @@ class ProductFragment : Fragment() {
         // TODO: Customize parameter initialization
         @JvmStatic
         fun newInstance(columnCount: Int) =
-            ProductFragment().apply {
+            OrderFragment().apply {
                 arguments = Bundle().apply {
                     putInt(ARG_COLUMN_COUNT, columnCount)
                 }

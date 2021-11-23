@@ -1,4 +1,4 @@
-package com.example.login.ui
+package com.example.login.ui.home
 
 import android.os.Bundle
 import android.view.LayoutInflater

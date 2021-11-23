@@ -1,17 +1,10 @@
 package com.example.login.placeholder
 
-import android.content.Intent
 import android.util.Log.d
-import android.widget.Toast
 import com.example.login.data.ProductData
-import com.example.login.ui.MainActivity
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import java.util.ArrayList
 import java.util.HashMap
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
-import kotlin.math.absoluteValue
 
 
 object ProductContent {
