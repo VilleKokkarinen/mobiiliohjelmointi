@@ -8,14 +8,9 @@ import java.util.HashMap
 
 
 object ProductContent {
-    /**
-     * An array of sample (placeholder) items.
-     */
+
     val ITEMS: MutableList<ProductContent> = ArrayList()
 
-    /**
-     * A map of sample (placeholder) items, by ID.
-     */
     val ITEM_MAP: MutableMap<String, ProductContent> = HashMap()
 
     var productList: MutableList<ProductData> = ArrayList<ProductData>()
@@ -70,19 +65,6 @@ object ProductContent {
                 data.price
             ))
     }
-
-    private fun makeDetails(position: Int): String {
-        val builder = StringBuilder()
-        builder.append("Details about Item: ").append(position)
-        for (i in 0..position - 1) {
-            builder.append("\nMore details information here.")
-        }
-        return builder.toString()
-    }
-
-    /**
-     * A placeholder item representing a piece of content.
-     */
     data class ProductContent(val ListIndex: String, val content: ProductData) {
         override fun toString(): String = content.name
     }

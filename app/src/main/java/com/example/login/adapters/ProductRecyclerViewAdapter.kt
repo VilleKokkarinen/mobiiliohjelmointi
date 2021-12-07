@@ -11,6 +11,9 @@ import com.example.login.databinding.FragmentProductBinding
 import com.example.login.data.DownloadImageTask
 import android.text.method.ScrollingMovementMethod
 import android.view.MotionEvent
+import android.widget.Button
+import com.example.login.basket.BasketFragment
+import com.example.login.placeholder.BasketContent
 
 class ProductRecyclerViewAdapter(
     private val values: MutableList<ProductData>
@@ -50,6 +53,14 @@ class ProductRecyclerViewAdapter(
             v?.onTouchEvent(event) ?: true
         }
 
+        holder.btn.setOnClickListener{
+            if(item != null){
+                //BasketFragment.
+                BasketContent.increaseAmount(item)
+            }
+
+        }
+
         //Enabling scrolling on TextViews.
         holder.description.movementMethod = ScrollingMovementMethod()
         holder.title.movementMethod = ScrollingMovementMethod()
@@ -62,6 +73,7 @@ class ProductRecyclerViewAdapter(
         val image: ImageView = binding.productImage
         val title: TextView = binding.title
         val description: TextView = binding.description
+        val btn: Button = binding.btnAddToBasket
 
         override fun toString(): String {
             return super.toString() + " '" + description.text + "'"

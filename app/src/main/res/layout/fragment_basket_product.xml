@@ -20,12 +20,27 @@
             android:scaleType="centerCrop"
             tools:srcCompat="@tools:sample/avatars" />
 
-        <Button
-            android:id="@+id/btn_add_to_basket"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Add to basket" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="15"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_remove_from_basket"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Remove" />
+
+            <TextView
+                android:id="@+id/amountBasket"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TEST"
+                android:textColor="@color/black" />
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -52,26 +67,6 @@
                 android:textAppearance="?attr/textAppearanceListItem" />
         </ScrollView>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/darker_gray"/>
-
-        <ScrollView
-            android:id="@+id/description_ScrollView"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:fillViewport="true"
-            android:scrollbars="vertical">
-
-            <TextView
-                android:id="@+id/description"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:textAppearance="?attr/textAppearanceListItem" />
-        </ScrollView>
     </LinearLayout>
 
 </LinearLayout>
