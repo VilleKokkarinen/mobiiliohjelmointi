@@ -1,5 +1,6 @@
 package com.example.login.placeholder
 
+import com.example.login.R
 import com.example.login.adapters.BasketRecyclerViewAdapter
 import com.example.login.basket.BasketFragment
 import com.example.login.data.ProductData
@@ -9,50 +10,40 @@ import java.util.HashMap
 object BasketContent {
     val ITEMS: MutableList<BasketContent> = ArrayList()
 
-    val ITEM_MAP: MutableMap<String, BasketContent> = HashMap()
-
     fun increaseAmount(item: ProductData) {
         var basketitem: BasketContent? = ITEMS.find { it.content.id == item.id }
-        var basketitem2: BasketContent? = ITEM_MAP[basketitem?.ListIndex]
 
         if(basketitem == null){
-            basketitem = createBasketItem(ITEMS.lastIndex +1, item)
+            basketitem = createBasketItem(ITEMS.lastIndex, item)
             ITEMS.add(basketitem)
         }
         else{
             basketitem.amount ++
-            BasketFragment().redraw()
         }
 
-        if(basketitem2 == null){
-            basketitem2 = createBasketItem(ITEMS.lastIndex +1, item)
-            ITEM_MAP.put(basketitem.ListIndex, basketitem2)
-        }
-        else{
-            basketitem2.amount ++
-            BasketFragment().redraw()
-        }
+        BasketFragment.refresh()
     }
 
     fun decreaseAmount(item: ProductData) {
         var basketitem: BasketContent? = ITEMS.find { it.content.id == item.id }
-        var basketitem2: BasketContent? = ITEM_MAP[basketitem?.ListIndex]
 
-        if(basketitem != null && basketitem.amount <= 0){
+        if(basketitem != null && basketitem.amount <= 1){
             ITEMS.remove(basketitem)
         }
-        else if(basketitem != null && basketitem.amount > 0){
+        else if(basketitem != null && basketitem.amount > 1){
             basketitem.amount --
-            BasketFragment().redraw()
         }
 
-        if(basketitem2 != null && basketitem2.amount <= 0){
-            ITEM_MAP.remove(basketitem2.ListIndex, basketitem2)
+
+        BasketFragment.refresh()
+    }
+    fun removeItem(item: ProductData){
+        var basketitem: BasketContent? = ITEMS.find { it.content.id == item.id }
+
+        if(basketitem != null){
+            ITEMS.remove(basketitem)
         }
-        else if(basketitem2 != null && basketitem2.amount > 0){
-            basketitem2.amount --
-            BasketFragment().redraw()
-        }
+        BasketFragment.refresh()
     }
 
     private fun createBasketItem(position: Int,data: ProductData): BasketContent {

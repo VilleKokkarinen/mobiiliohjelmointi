@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/basketContainer"
-    android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    >
+    android:layout_marginBottom="60dp"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"

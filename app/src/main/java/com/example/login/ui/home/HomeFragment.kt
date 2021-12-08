@@ -17,7 +17,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.login.R
 import com.example.login.basket.BasketFragment
-import com.example.login.databinding.ActivityForgotPasswordBinding
 import com.example.login.databinding.FragmentHomeBinding
 import kotlin.properties.Delegates
 
@@ -52,19 +51,14 @@ class HomeFragment : Fragment(), View.OnTouchListener {
         trans.commit()
 
         button.setOnClickListener{
-            if(FL.translationY + 270 >= FL.height){
+            if(FL.translationY + 250 >= FL.height){
                 var floatvalue : Float = 5f
                 var interpolator = OvershootInterpolator(5f)
-                FL.animate().setInterpolator(interpolator).translationYBy(-275f).setDuration(500)
+                FL.animate().setInterpolator(interpolator).translationYBy(-250f).setDuration(500)
             }
 
         }
         FL.setOnTouchListener(this)
-
-        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
         return root
     }
 

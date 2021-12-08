@@ -24,6 +24,7 @@ public class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
         } catch (Exception e) {
             Log.e("Error", e.getMessage());
             e.printStackTrace();
+            return mIcon11;
         }
         return mIcon11;
     }

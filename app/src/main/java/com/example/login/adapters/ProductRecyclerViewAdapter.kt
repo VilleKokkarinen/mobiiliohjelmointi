@@ -55,10 +55,8 @@ class ProductRecyclerViewAdapter(
 
         holder.btn.setOnClickListener{
             if(item != null){
-                //BasketFragment.
                 BasketContent.increaseAmount(item)
             }
-
         }
 
         //Enabling scrolling on TextViews.
