@@ -22,6 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:text="@string/logout"
+            android:onClick="logout"
             app:layout_constraintTop_toBottomOf="@+id/update_pass_btn"
             tools:layout_editor_absoluteX="-16dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>

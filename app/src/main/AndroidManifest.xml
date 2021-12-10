@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.login">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -20,6 +21,10 @@
         <activity
             android:name="com.example.login.ui.login.ForgotPasswordActivity"
             android:exported="true" />
+        <activity
+            android:name="com.example.login.ui.login.LogoutActivity"
+            android:exported="true"
+            tools:ignore="MissingClass" />
         <activity
             android:name="com.example.login.ui.login.SignupActivity"
             android:exported="true" />
