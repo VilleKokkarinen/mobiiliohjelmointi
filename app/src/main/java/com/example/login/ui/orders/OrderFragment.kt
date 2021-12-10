@@ -1,63 +1,87 @@
 package com.example.login.ui.orders
 
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.login.adapters.OrderRecyclerViewAdapter
 import com.example.login.R
+import com.example.login.adapters.ProductRecyclerViewAdapter
+import com.example.login.data.OrderData
+import com.example.login.data.ProductData
 import com.example.login.placeholder.PlaceholderContent
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
 
-/**
- * A fragment representing a list of Items.
- */
 class OrderFragment : Fragment() {
+    var fragmentView : View? = null
+    var firedatabase : FirebaseDatabase? = null
+    var OrderList : ArrayList<OrderData> ? = null
+    var ref : DatabaseReference? = null
 
-    private var columnCount = 1
+    private lateinit var auth: FirebaseAuth
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        arguments?.let {
-            columnCount = it.getInt(ARG_COLUMN_COUNT)
-        }
-    }
+    var mRecyclerView : RecyclerView? =null
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
+
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_order_item_list, container, false)
+        fragmentView= LayoutInflater.from(activity).inflate(R.layout.fragment_order_item_list, container, false)
 
-        // Set the adapter
-        if (view is RecyclerView) {
-            with(view) {
-                layoutManager = when {
-                    columnCount <= 1 -> LinearLayoutManager(context)
-                    else -> GridLayoutManager(context, columnCount)
-                }
-                adapter = OrderRecyclerViewAdapter(PlaceholderContent.ITEMS)
+        firedatabase = FirebaseDatabase.getInstance()
+
+
+        mRecyclerView = fragmentView?.findViewById(R.id.orderList)
+        mRecyclerView?.setHasFixedSize(true)
+        mRecyclerView?.layoutManager = LinearLayoutManager(context)
+
+        val itemDecoration =
+            DividerItemDecoration(mRecyclerView?.getContext(), DividerItemDecoration.VERTICAL)
+        val drawable = GradientDrawable(
+            GradientDrawable.Orientation.BOTTOM_TOP,
+            intArrayOf(0xfff7f7f7.toInt(), 0xfff7f7f7.toInt())
+        )
+        drawable.setSize(1, 3)
+        itemDecoration.setDrawable(drawable)
+        mRecyclerView?.addItemDecoration(itemDecoration)
+
+        OrderList = arrayListOf<OrderData>()
+        auth = FirebaseAuth.getInstance()
+
+        ref = FirebaseDatabase.getInstance().getReference("orders/"+ (auth.currentUser?.uid).toString()+"/orders")
+
+
+        ref?.addValueEventListener(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+                TODO("not implemented")
             }
-        }
-        return view
-    }
 
-    companion object {
+            override fun onDataChange(p0: DataSnapshot) {
+                if(p0.exists()){
 
-        // TODO: Customize parameter argument names
-        const val ARG_COLUMN_COUNT = "column-count"
+                    for (h in p0.children){
+                        val bal = h.getValue(OrderData::class.java)
+                        OrderList?.add(bal!!)
+                    }
 
-        // TODO: Customize parameter initialization
-        @JvmStatic
-        fun newInstance(columnCount: Int) =
-            OrderFragment().apply {
-                arguments = Bundle().apply {
-                    putInt(ARG_COLUMN_COUNT, columnCount)
+                    val adapter = OrderRecyclerViewAdapter(OrderList!!)
+                    mRecyclerView?.adapter = adapter
+
                 }
+
             }
+        })
+
+        return  fragmentView
     }
 }
